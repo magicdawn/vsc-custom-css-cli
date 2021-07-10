@@ -22,3 +22,5 @@ if (!APP_DIR) {
 export const HTML_FILE = path.join(APP_DIR, htmlRelativeFile)
 
 export const DATA_ATTR_NAME = 'data-vsc-custom-file'
+
+export const ALLOWED_EXT = ['js', 'css', 'scss', 'less']
