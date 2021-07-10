@@ -11,7 +11,7 @@ import sass from 'sass'
 import ProxyAgent from 'proxy-agent'
 
 const debug = debugFactory('vsc-custom:add')
-const ALLOWED_EXT = ['js', 'css', 'sass', 'less']
+const ALLOWED_EXT = ['js', 'css', 'scss', 'less']
 
 const isUrl = (u: string) => is.url(u) as boolean
 
@@ -119,7 +119,7 @@ async function getContent(file: string) {
       content = output.css
     }
 
-    if (ext === 'sass') {
+    if (ext === 'scss') {
       const output = sass.renderSync({ file, outputStyle: 'expanded' })
       content = output.css.toString()
     }
@@ -130,7 +130,7 @@ async function getContent(file: string) {
       const output = await less.render(content)
       content = output.css
     }
-    if (ext === 'sass') {
+    if (ext === 'scss') {
       const o = sass.renderSync({ data: content })
       content = o.css.toString()
     }
