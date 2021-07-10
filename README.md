@@ -38,6 +38,17 @@ vsc-custom add ./custom.css
 vsc-custom add 'https://gist.githubusercontent.com/magicdawn/9a8278667c5ebdf71cb87b8504295449/raw/a47ebbf01baf0a0fab49b2f8e9ec9411b492c9cd/vscode-big-clock.less'
 ```
 
+## Use Case
+
+### Big Clock
+
+![image](https://user-images.githubusercontent.com/4067115/125153891-6ff49080-e189-11eb-8b08-42789d5c5016.png)
+
+- install extension https://marketplace.visualstudio.com/items?itemName=rid9.datetime
+- install custom css `vsc-custom add 'https://gist.githubusercontent.com/magicdawn/9a8278667c5ebdf71cb87b8504295449/raw/a47ebbf01baf0a0fab49b2f8e9ec9411b492c9cd/vscode-big-clock.less'`
+
+### more ...
+
 ## Changelog
 
 [CHANGELOG.md](CHANGELOG.md)
