@@ -2,4 +2,7 @@
 
 ## v0.0.1 2021-07-10
 
-- first release
+- first release, we can run `vsc-custom add file-or-url` now, and sass / less is supported
+- `manage` command is under construction
+- auto patch is under construction
+- tired, will continue in days
