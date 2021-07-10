@@ -11,13 +11,31 @@
 ## Install
 
 ```sh
-$ npm i vsc-custom-css-cli --save
+$ npm i vsc-custom-css-cli -g
 ```
 
-## API
+## Binary name = `vsc-custom`
 
-```js
-const vscCustomCssCli = require('vsc-custom-css-cli');
+```sh
+$ vsc-custom
+```
+
+## Commands
+
+### `vsc-custom add <file-or-url>`
+
+- file-or-url
+  local file or file url
+  supports `.css` / `.less` / `.sass` & `.js` file
+
+example
+
+```sh
+# local css
+vsc-custom add ./custom.css
+
+# remote url
+vsc-custom add 'https://gist.githubusercontent.com/magicdawn/9a8278667c5ebdf71cb87b8504295449/raw/a47ebbf01baf0a0fab49b2f8e9ec9411b492c9cd/vscode-big-clock.less'
 ```
 
 ## Changelog
