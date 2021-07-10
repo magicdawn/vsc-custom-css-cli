@@ -22,6 +22,8 @@
 $ npm i vsc-custom-css-cli -g
 ```
 
+**only macOS** is supported
+
 ## Binary name = `vsc-custom`
 
 ```sh
