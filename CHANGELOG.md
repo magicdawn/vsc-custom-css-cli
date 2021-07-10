@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.0.3 2021-07-10
+
+- add checksum support after html modified
+
 ## v0.0.2 2021-07-10
 
 - add `package.files` field
