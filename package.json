@@ -6,6 +6,14 @@
   "bin": {
     "vsc-custom": "bin/vsc-custom.js"
   },
+  "files": [
+    "bin",
+    "lib",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
   "scripts": {
     "test": "mocha",
     "test-cover": "nyc --reporter=lcov --reporter=text mocha",
