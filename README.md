@@ -8,6 +8,11 @@
 [![npm downloads](https://img.shields.io/npm/dm/vsc-custom-css-cli.svg?style=flat-square)](https://www.npmjs.com/package/vsc-custom-css-cli)
 [![npm license](https://img.shields.io/npm/l/vsc-custom-css-cli.svg?style=flat-square)](http://magicdawn.mit-license.org)
 
+## Credits
+
+- https://gist.github.com/Hendrixer/7a250a2be529cda8939de8305c9a85a1
+- https://github.com/lehni/vscode-fix-checksums
+
 ## Install
 
 ```sh
