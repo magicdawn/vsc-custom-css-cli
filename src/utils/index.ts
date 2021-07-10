@@ -8,6 +8,9 @@ import { readUrl } from 'dl-vampire'
 import ProxyAgent from 'proxy-agent'
 import { DATA_ATTR_NAME, ALLOWED_EXT } from '../config'
 
+export * from './checksum'
+export * from './permission'
+
 // clean up unexists file
 export function cleanUp($: CheerioAPI) {
   const tags = $(`[${DATA_ATTR_NAME}]`).toArray()

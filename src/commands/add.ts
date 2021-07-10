@@ -4,8 +4,7 @@ import debugFactory from 'debug'
 import cheerio from 'cheerio'
 import path from 'path'
 import { HTML_FILE, DATA_ATTR_NAME, ALLOWED_EXT, APP_DIR } from '../config'
-import { cleanUp, isUrl, getContent } from '../utils'
-import { chown } from '../utils/permission'
+import { cleanUp, isUrl, getContent, chown, checkChecksum } from '../utils'
 
 const debug = debugFactory('vsc-custom:add')
 
@@ -74,7 +73,10 @@ export default class AddCommand extends Command {
 
     const newHtml = $.html()
     fse.writeFileSync(HTML_FILE, newHtml)
-    console.log(`[vsc-custom]: htmlFile => '%s'`, HTML_FILE)
+    console.log(`[vsc-custom]: htmlFile '%s'`, HTML_FILE)
     console.log('[vsc-custom]: embed file success %s', file)
+
+    checkChecksum()
+    console.log('[vsc-custom]: checksum applied')
   }
 }
