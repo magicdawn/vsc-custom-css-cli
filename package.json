@@ -1,0 +1,67 @@
+{
+  "name": "vsc-custom-css-cli",
+  "version": "0.0.1",
+  "description": "vsc-custom-css-cli",
+  "main": "lib/api.js",
+  "bin": {
+    "vsc-custom": "bin/vsc-custom.js"
+  },
+  "scripts": {
+    "test": "mocha",
+    "test-cover": "nyc --reporter=lcov --reporter=text mocha",
+    "report-cover": "codecov",
+    "dev": "tsc -w",
+    "build": "rm -rf lib; rm tsconfig.tsbuildinfo; tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/magicdawn/vsc-custom-css-cli.git"
+  },
+  "keywords": [
+    "vsc",
+    "vscode",
+    "vscode-custom-css",
+    "vscode-custom"
+  ],
+  "author": "magicdawn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/magicdawn/vsc-custom-css-cli/issues"
+  },
+  "homepage": "https://github.com/magicdawn/vsc-custom-css-cli#readme",
+  "devDependencies": {
+    "@magicdawn/eslint-config": "latest",
+    "@magicdawn/prettier-config": "latest",
+    "@types/debug": "^4.1.6",
+    "@types/eslint": "^6.8.1",
+    "@types/fs-extra": "^9.0.12",
+    "@types/mocha": "^8.2.3",
+    "@types/prettier": "2.3.2",
+    "codecov": "^3.3.0",
+    "eslint": "^6.8.0",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "mocha": "^6.1.4",
+    "nyc": "^14.0.0",
+    "prettier": "latest",
+    "should": "^13.2.3",
+    "typescript": "^4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,less,vue}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "clipanion": "^3.0.0",
+    "debug": "^4.3.2",
+    "fs-extra": "^10.0.0"
+  }
+}
