@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.0.4 2021-07-12
+
+- fix sudo-prompt error
+
 ## v0.0.3 2021-07-10
 
 - add checksum support after html modified
