@@ -10,7 +10,7 @@ export async function chown(dir: string) {
   const cmd = `chown -R ${username} '${dir}'`
   debug('cmd: %s', cmd)
   const result = await new Promise((resolve, reject) => {
-    prompt.exec(cmd, { name: 'vsc-custom' }, (err, stdout) => {
+    prompt.exec(cmd, { name: 'VscCustomCssCli' }, (err, stdout) => {
       if (err) return reject(err)
       resolve(stdout)
     })
