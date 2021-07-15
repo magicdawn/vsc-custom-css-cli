@@ -16,5 +16,7 @@ cli.register(Builtins.DefinitionsCommand)
 // more commands
 import AddCommand from './commands/add'
 cli.register(AddCommand)
+import ListCommand from './commands/list'
+cli.register(ListCommand)
 
 cli.runExit(args, Cli.defaultContext)

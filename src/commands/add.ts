@@ -3,8 +3,9 @@ import fse from 'fs-extra'
 import debugFactory from 'debug'
 import cheerio from 'cheerio'
 import path from 'path'
-import { HTML_FILE, DATA_ATTR_NAME, ALLOWED_EXT, APP_DIR } from '../config'
-import { cleanUp, isUrl, getContent, chown, checkChecksum } from '../utils'
+import { HTML_FILE, DATA_ATTR_NAME, ALLOWED_EXT } from '../config'
+import { cleanUp, isUrl, getContent, checkChecksum } from '../utils'
+import { prepare, save } from './common'
 
 const debug = debugFactory('vsc-custom:add')
 
@@ -34,17 +35,6 @@ export default class AddCommand extends Command {
       return
     }
 
-    let ok = true
-    try {
-      fse.accessSync(HTML_FILE, fse.constants.W_OK)
-    } catch (e) {
-      ok = false
-    }
-    // let's sudo
-    if (!ok) {
-      await chown(APP_DIR)
-    }
-
     //  backup original
     const bakFile = HTML_FILE.replace(/(\w+)\.html$/, '$1.bak.html')
     if (!fse.existsSync(bakFile)) {
@@ -54,11 +44,7 @@ export default class AddCommand extends Command {
       debug('bak file already exists, skip backup')
     }
 
-    const htmlContent = fse.readFileSync(HTML_FILE, 'utf-8')
-    const $ = cheerio.load(htmlContent, { decodeEntities: false })
-
-    // first cleanup
-    cleanUp($)
+    const $ = await prepare()
 
     // add tag or update tag content
     const fileContent = await getContent(file)
@@ -71,12 +57,7 @@ export default class AddCommand extends Command {
       $('html').append(tag)
     }
 
-    const newHtml = $.html()
-    fse.writeFileSync(HTML_FILE, newHtml)
-    console.log(`[vsc-custom]: htmlFile '%s'`, HTML_FILE)
+    save($)
     console.log('[vsc-custom]: embed file success %s', file)
-
-    checkChecksum()
-    console.log('[vsc-custom]: checksum applied')
   }
 }
