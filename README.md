@@ -48,6 +48,13 @@ vsc-custom add ./custom.css
 vsc-custom add 'https://gist.githubusercontent.com/magicdawn/9a8278667c5ebdf71cb87b8504295449/raw/a47ebbf01baf0a0fab49b2f8e9ec9411b492c9cd/vscode-big-clock.less'
 ```
 
+### `vsc-custom list`
+
+or `vsc-custom ls` / `vsc-custom l`
+
+- this will list all added files
+- default will disabled the unselected files. use `--delete` or `--del` flag to remove added files
+
 ## Use Case
 
 ### Big Clock
