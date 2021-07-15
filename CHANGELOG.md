@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.1.0 2021-07-15
+
+- add `vsc-custom list|ls|l` command, for manage & update added files
+
 ## v0.0.4 2021-07-12
 
 - fix sudo-prompt error
