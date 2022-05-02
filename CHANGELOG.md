@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.0 2022-05-02
+
+- add `vsc-custom update|up` command, for update embed file contents
+
 ## v0.1.0 2021-07-15
 
 - add `vsc-custom list|ls|l` command, for manage & update added files
