@@ -48,6 +48,17 @@ vsc-custom add ./custom.css
 vsc-custom add 'https://gist.githubusercontent.com/magicdawn/9a8278667c5ebdf71cb87b8504295449/raw/a47ebbf01baf0a0fab49b2f8e9ec9411b492c9cd/vscode-big-clock.less'
 ```
 
+### `vsc-custom update` / `vsc-custom up`
+
+- this will update embeded file contents
+
+for example
+
+- run `vsc-custom add ./local-file.css`
+- modify local-file.css
+- quit vscode
+- run `vsc-custom update` in order make it effects in vscode
+
 ### `vsc-custom list`
 
 or `vsc-custom ls` / `vsc-custom l`
