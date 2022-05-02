@@ -7,7 +7,7 @@
     "vsc-custom": "bin/vsc-custom.js"
   },
   "files": [
-    "bin",
+    "bin/vsc-custom.js",
     "lib",
     "package.json",
     "README.md",

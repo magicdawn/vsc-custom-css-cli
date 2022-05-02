@@ -10,5 +10,9 @@
     "target": "es2019",
     "module": "CommonJS",
     "incremental": true
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "swc": true
   }
 }
