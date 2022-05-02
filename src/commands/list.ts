@@ -5,7 +5,7 @@ import { prepare, save } from './common'
 import pmap from 'promise.map'
 import { getContent } from '../utils'
 
-export default class ManageCommand extends Command {
+export class ListCommand extends Command {
   static paths = [['list'], ['ls'], ['l']]
 
   static usage: Usage = {

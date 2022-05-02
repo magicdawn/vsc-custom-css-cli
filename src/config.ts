@@ -1,11 +1,9 @@
 import path from 'path'
 
 type Platform = typeof process.platform
-type IAppDirRegistry = Partial<
-  {
-    [k in Platform]: string
-  }
->
+type IAppDirRegistry = Partial<{
+  [k in Platform]: string
+}>
 
 const APP_DIR_REGISTRY: IAppDirRegistry = {
   darwin: '/Applications/Visual Studio Code.app/Contents/Resources/app/',

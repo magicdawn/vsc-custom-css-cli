@@ -9,7 +9,6 @@
     "resolveJsonModule": true,
     "target": "es2019",
     "module": "CommonJS",
-    "skipLibCheck": true,
     "incremental": true
   }
 }

@@ -9,7 +9,7 @@ import { prepare, save } from './common'
 
 const debug = debugFactory('vsc-custom:add')
 
-export default class AddCommand extends Command {
+export class AddCommand extends Command {
   static paths = [['add']]
 
   static usage: Usage = {
