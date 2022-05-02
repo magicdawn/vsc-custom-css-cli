@@ -1,14 +1,15 @@
 import { Command, Usage, Option } from 'clipanion'
 import inquirer from 'inquirer'
+import pmap from 'promise.map'
 import { DATA_ATTR_NAME } from '../config'
 import { prepare, save } from './common'
-import pmap from 'promise.map'
 import { getContent } from '../utils'
 
 export class ListCommand extends Command {
   static paths = [['list'], ['ls'], ['l']]
 
   static usage: Usage = {
+    category: '',
     description: 'manage added files',
   }
 

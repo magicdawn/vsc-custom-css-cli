@@ -17,6 +17,9 @@ cli.register(Builtins.DefinitionsCommand)
 import { AddCommand } from './commands/add'
 cli.register(AddCommand)
 
+import { UpdateCommand } from './commands/update'
+cli.register(UpdateCommand)
+
 import { ListCommand } from './commands/list'
 cli.register(ListCommand)
 

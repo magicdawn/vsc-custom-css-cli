@@ -1,10 +1,9 @@
 import { Command, Option, Usage } from 'clipanion'
 import fse from 'fs-extra'
 import debugFactory from 'debug'
-import cheerio from 'cheerio'
 import path from 'path'
 import { HTML_FILE, DATA_ATTR_NAME, ALLOWED_EXT } from '../config'
-import { cleanUp, isUrl, getContent, checkChecksum } from '../utils'
+import { isUrl, getContent } from '../utils'
 import { prepare, save } from './common'
 
 const debug = debugFactory('vsc-custom:add')
