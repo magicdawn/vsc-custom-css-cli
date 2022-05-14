@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.3.0 2022-05-14
+
+- use external data file for added assets storage, and it will keep data when updating vscode
+
 ## v0.2.0 2022-05-02
 
 - add `vsc-custom update|up` command, for update embed file contents
