@@ -1,10 +1,11 @@
 import { Command, Option, Usage } from 'clipanion'
-import fse from 'fs-extra'
 import debugFactory from 'debug'
+import fse from 'fs-extra'
 import path from 'path'
-import { HTML_FILE, DATA_ATTR_NAME, ALLOWED_EXT } from '../config'
-import { isUrl, getContent } from '../utils'
-import { prepare, save } from './common'
+import { ALLOWED_EXT, HTML_FILE } from '../config'
+import { add } from '../data'
+import { isUrl } from '../utils'
+import { applyData } from './common'
 
 const debug = debugFactory('vsc-custom:add')
 
@@ -43,20 +44,9 @@ export class AddCommand extends Command {
       debug('bak file already exists, skip backup')
     }
 
-    const $ = await prepare()
+    add(file)
+    await applyData()
 
-    // add tag or update tag content
-    const fileContent = await getContent(file)
-    const tagExists = $(`[${DATA_ATTR_NAME}='${file}']`)
-    if (tagExists.length) {
-      tagExists.text(fileContent)
-    } else {
-      const tagName = ext === 'js' ? 'script' : 'style'
-      const tag = `\n<${tagName} ${DATA_ATTR_NAME}='${file}'>\n${fileContent}\n</${tagName}>\n`
-      $('html').append(tag)
-    }
-
-    save($)
     console.log('[vsc-custom]: embed file success %s', file)
   }
 }

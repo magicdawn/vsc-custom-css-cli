@@ -1,9 +1,7 @@
-import { Command, Usage, Option } from 'clipanion'
+import { Command, Usage } from 'clipanion'
 import inquirer from 'inquirer'
-import pmap from 'promise.map'
-import { DATA_ATTR_NAME } from '../config'
-import { prepare, save } from './common'
-import { getContent } from '../utils'
+import { CURRENT_ASSETS, write } from '../data'
+import { applyData } from './common'
 
 export class ListCommand extends Command {
   static paths = [['list'], ['ls'], ['l']]
@@ -13,60 +11,24 @@ export class ListCommand extends Command {
     description: 'manage added files',
   }
 
-  delete = Option.Boolean('--delete,--del', {
-    description: 'use delete mode, default is disabled mode',
-  })
-
   async execute() {
-    const $ = await prepare()
-    const tags = $(`[${DATA_ATTR_NAME}]`)
-
-    const listData = tags
-      .map(function () {
-        const file = $(this).attr(DATA_ATTR_NAME)
-        const disabled = $(this).attr('data-disabled') === 'true'
-        return { file, disabled }
-      })
-      .toArray()
-
-    const newListData = await pmap(
-      listData,
-      async ({ file, disabled }) => {
-        const content = await getContent(file)
-        return { file, disabled, content }
-      },
-      5
-    )
-
+    const list = CURRENT_ASSETS
     const { selectedIndex } = await inquirer.prompt([
       {
         type: 'checkbox',
         message: 'choose from list',
         name: 'selectedIndex',
-        choices: newListData.map((item, index) => {
-          return { name: item.file, value: index, checked: !item.disabled }
+        choices: CURRENT_ASSETS.map((item, index) => {
+          return { name: item, value: index, checked: true }
         }),
       },
     ])
 
-    const shouldDelete = this.delete
-    tags.each(function (index) {
-      const keep = selectedIndex.includes(index)
-
-      if (keep) {
-        $(this)
-          .text(newListData[index].content || '')
-          .removeAttr('data-disabled')
-        return
-      }
-
-      if (shouldDelete) {
-        $(this).remove()
-      } else {
-        $(this).text('').attr('data-disabled', 'true')
-      }
+    const newList = CURRENT_ASSETS.filter((item, index) => {
+      return selectedIndex.includes(index)
     })
+    write(newList)
 
-    save($)
+    await applyData()
   }
 }
