@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.4.0 2022-08-09
+
+- support new version vscode 1.70.0 'out/vs/code/electron-sandbox/workbench/workbench.html'
+
 ## v0.3.0 2022-05-14
 
 - use external data file for added assets storage, and it will keep data when updating vscode
