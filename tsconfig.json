@@ -12,7 +12,6 @@
     "incremental": true
   },
   "ts-node": {
-    "transpileOnly": true,
     "swc": true
   }
 }
