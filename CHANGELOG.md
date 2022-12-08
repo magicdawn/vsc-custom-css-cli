@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.5.0 2022-12-08
+
+- warn on local file not exist
+- use consola for fancy log
+
 ## v0.4.0 2022-08-09
 
 - support new version vscode 1.70.0 'out/vs/code/electron-sandbox/workbench/workbench.html'
