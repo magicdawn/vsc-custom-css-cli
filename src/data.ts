@@ -1,3 +1,4 @@
+import consola from 'consola'
 import envPaths from 'env-paths'
 import fse from 'fs-extra'
 import path from 'path'
@@ -25,7 +26,7 @@ export function read() {
 }
 
 // read on start
-console.log('[vsc-custom]: using data file: %s', dataFile)
+consola.info('[vsc-custom]: using data file: %s', dataFile)
 read()
 
 export function write(data: AddedAssets) {

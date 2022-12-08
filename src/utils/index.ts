@@ -1,12 +1,12 @@
-import path from 'path'
+import { CheerioAPI } from 'cheerio'
+import consola from 'consola'
+import { readUrl } from 'dl-vampire'
 import fse from 'fs-extra'
 import is from 'is_js'
-import { CheerioAPI } from 'cheerio'
 import less from 'less'
+import path from 'path'
 import sass from 'sass'
-import { readUrl } from 'dl-vampire'
-import ProxyAgent from 'proxy-agent'
-import { DATA_ATTR_NAME, ALLOWED_EXT } from '../config'
+import { ALLOWED_EXT, DATA_ATTR_NAME } from '../config'
 
 export * from './checksum'
 export * from './permission'
@@ -39,14 +39,13 @@ export async function getRawContent(file: string) {
     return readUrl({
       url: file,
       encoding: 'utf-8',
-      requestOptions: {
-        agent: new ProxyAgent(),
-      },
     })
   }
 
   if (fse.existsSync(file)) {
     return read(file)
+  } else {
+    consola.warn('[vsc-custom]: file %s does not exist', file)
   }
 
   return ''

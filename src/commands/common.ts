@@ -1,4 +1,5 @@
 import cheerio, { CheerioAPI } from 'cheerio'
+import consola from 'consola'
 import fse from 'fs-extra'
 import path from 'path'
 import pmap from 'promise.map'
@@ -27,10 +28,10 @@ export async function prepare() {
 export function save($: CheerioAPI) {
   const newHtml = $.html()
   fse.writeFileSync(HTML_FILE, newHtml)
-  console.log(`[vsc-custom]: write html file success '%s'`, HTML_FILE)
+  consola.success(`[vsc-custom]: write html file success '%s'`, HTML_FILE)
 
   checkChecksum()
-  console.log('[vsc-custom]: checksum applied')
+  consola.success('[vsc-custom]: checksum applied')
 }
 
 export async function applyData() {

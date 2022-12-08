@@ -1,4 +1,5 @@
 import { Command, Option, Usage } from 'clipanion'
+import consola from 'consola'
 import debugFactory from 'debug'
 import fse from 'fs-extra'
 import path from 'path'
@@ -47,6 +48,6 @@ export class AddCommand extends Command {
     add(file)
     await applyData()
 
-    console.log('[vsc-custom]: embed file success %s', file)
+    consola.log('[vsc-custom]: embed file success %s', file)
   }
 }
