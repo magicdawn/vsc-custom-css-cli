@@ -30,6 +30,10 @@ $ npm i vsc-custom-css-cli -g
 $ vsc-custom
 ```
 
+## Notice
+
+**After add/update command, in order to make it effects, a full quit & restart of vscode is needed.**
+
 ## Commands
 
 ### `vsc-custom add <file-or-url>`
@@ -51,13 +55,14 @@ vsc-custom add 'https://gist.githubusercontent.com/magicdawn/9a8278667c5ebdf71cb
 ### `vsc-custom update` / `vsc-custom up`
 
 - this will update embeded file contents
+- **After a vscode auto-update, everything added is lost, a `vsc-custom up` command is neeeded to get things back**
 
 for example
 
 - run `vsc-custom add ./local-file.css`
 - modify local-file.css
-- quit vscode
 - run `vsc-custom update` in order make it effects in vscode
+- quit vscode & restrt vscode
 
 ### `vsc-custom list`
 
@@ -74,6 +79,7 @@ or `vsc-custom ls` / `vsc-custom l`
 
 - install extension https://marketplace.visualstudio.com/items?itemName=rid9.datetime
 - install custom css `vsc-custom add 'https://gist.githubusercontent.com/magicdawn/9a8278667c5ebdf71cb87b8504295449/raw/a47ebbf01baf0a0fab49b2f8e9ec9411b492c9cd/vscode-big-clock.less'`
+- quit vscode & restart to see this screenshot happens
 
 ### more ...
 
