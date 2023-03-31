@@ -1,6 +1,6 @@
 {
   "name": "vsc-custom-css-cli",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "vsc-custom-css-cli",
   "main": "lib/api.js",
   "bin": {
