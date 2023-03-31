@@ -2,7 +2,6 @@ import { CheerioAPI } from 'cheerio'
 import consola from 'consola'
 import { readUrl } from 'dl-vampire'
 import fse from 'fs-extra'
-import is from 'is_js'
 import less from 'less'
 import path from 'path'
 import sass from 'sass'
@@ -30,7 +29,7 @@ export function cleanUp($: CheerioAPI) {
   })
 }
 
-export const isUrl = (u: string) => is.url(u) as boolean
+export const isUrl = (url: string) => /^https?:\/\//.test(url)
 
 export const read = (file: string) => fse.readFileSync(file, 'utf-8')
 
