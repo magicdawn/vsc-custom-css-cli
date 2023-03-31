@@ -75,6 +75,9 @@
     "type-fest": "^3.7.2",
     "typescript": "^5.0.3"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "prettier": "@magicdawn/prettier-config",
   "lint-staged": {
     "*.{js,less,vue}": [
