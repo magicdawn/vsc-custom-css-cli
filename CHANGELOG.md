@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.6.0 2023-03-31
+
+- save disabled state in `vsc-custom ls` command
+- new command: rm added via `vsc-custom rm` command
+
 ## v0.5.0 2022-12-08
 
 - warn on local file not exist

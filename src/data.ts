@@ -7,41 +7,63 @@ import { PackageJson } from 'type-fest'
 const { name } = require('../package.json') as PackageJson
 const paths = envPaths(name, { suffix: '' })
 
+export type AddedAsset = { file: string; disabled: boolean }
+
 export const dataFile = path.join(paths.data, 'added-assets.json')
 
-type AddedAssets = string[]
+export let CURRENT_ASSETS: AddedAsset[] = []
 
-export let CURRENT_ASSETS: AddedAssets = []
+// 兼容之前 string[] 的数据
+type CompatibleJson = (string | AddedAsset)[]
+function toAssets(compatibleJSON: CompatibleJson) {
+  return compatibleJSON.map((item) => {
+    if (typeof item === 'string') return { file: item, disabled: false }
+    return item
+  })
+}
 
 export function read() {
-  let json = fse.readJSONSync(dataFile, { throws: false }) as AddedAssets
+  const json = fse.readJSONSync(dataFile, { throws: false }) as CompatibleJson
 
   if (!json) {
-    json = [] as AddedAssets
-    write(json)
+    write([])
+    return []
   }
 
-  CURRENT_ASSETS = json
-  return json
+  return (CURRENT_ASSETS = toAssets(json))
 }
 
 // read on start
 consola.info('[vsc-custom]: using data file: %s', dataFile)
 read()
 
-export function write(data: AddedAssets) {
+export function write(data: AddedAsset[]) {
   CURRENT_ASSETS = data
   fse.outputJSONSync(dataFile, data)
 }
 
-export function add(item: string) {
-  const items = read()
-
-  if (items.includes(item)) {
-    items.splice(items.indexOf(item), 1)
+const _remove = (file: string) => {
+  const index = CURRENT_ASSETS.findIndex((i) => i.file === file)
+  if (index !== -1) {
+    CURRENT_ASSETS.splice(index, 1)
   }
+}
 
-  items.push(item)
-  write(items)
-  return items
+export function add(file: string) {
+  // rm
+  _remove(file)
+
+  // add
+  CURRENT_ASSETS.push({ file, disabled: false })
+
+  // persist
+  write(CURRENT_ASSETS)
+}
+
+export function remove(file: string) {
+  // rm
+  _remove(file)
+
+  // persist
+  write(CURRENT_ASSETS)
 }

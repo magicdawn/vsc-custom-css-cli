@@ -48,6 +48,6 @@ export class AddCommand extends Command {
     add(file)
     await applyData()
 
-    consola.log('[vsc-custom]: embed file success %s', file)
+    consola.success('[vsc-custom]: embed file success %s', file)
   }
 }

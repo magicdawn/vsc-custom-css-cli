@@ -1,4 +1,4 @@
-import { Cli, Builtins } from 'clipanion'
+import { Builtins, Cli } from 'clipanion'
 import { PackageJson } from 'type-fest'
 const { version, name, bin } = require('../package') as PackageJson
 
@@ -16,6 +16,9 @@ cli.register(Builtins.DefinitionsCommand)
 // more commands
 import { AddCommand } from './commands/add'
 cli.register(AddCommand)
+
+import { RemoveCommand } from './commands/remove'
+cli.register(RemoveCommand)
 
 import { UpdateCommand } from './commands/update'
 cli.register(UpdateCommand)

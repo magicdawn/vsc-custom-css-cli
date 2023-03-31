@@ -1,6 +1,6 @@
 import { Command, Usage } from 'clipanion'
 import inquirer from 'inquirer'
-import { CURRENT_ASSETS, write } from '../data'
+import { AddedAsset, CURRENT_ASSETS, write } from '../data'
 import { applyData } from './common'
 
 export class ListCommand extends Command {
@@ -12,20 +12,19 @@ export class ListCommand extends Command {
   }
 
   async execute() {
-    const list = CURRENT_ASSETS
     const { selectedIndex } = await inquirer.prompt([
       {
         type: 'checkbox',
         message: 'choose from list',
         name: 'selectedIndex',
-        choices: CURRENT_ASSETS.map((item, index) => {
-          return { name: item, value: index, checked: true }
+        choices: CURRENT_ASSETS.map((asset, index) => {
+          return { name: asset.file, value: index, checked: !asset.disabled }
         }),
       },
     ])
 
-    const newList = CURRENT_ASSETS.filter((item, index) => {
-      return selectedIndex.includes(index)
+    const newList: AddedAsset[] = CURRENT_ASSETS.map((item, index) => {
+      return { ...item, disabled: !selectedIndex.includes(index) }
     })
     write(newList)
 

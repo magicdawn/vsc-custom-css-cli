@@ -1,11 +1,14 @@
 import cheerio, { CheerioAPI } from 'cheerio'
 import consola from 'consola'
+import debugFactory from 'debug'
 import fse from 'fs-extra'
 import path from 'path'
 import pmap from 'promise.map'
 import { APP_DIR, DATA_ATTR_NAME, HTML_FILE } from '../config'
 import { CURRENT_ASSETS } from '../data'
 import { checkChecksum, chown, getContent } from '../utils'
+
+const debug = debugFactory('vsc-custom:common')
 
 export async function prepare() {
   let ok = true
@@ -42,12 +45,17 @@ export async function applyData() {
 
   // update contents
   const listData = await pmap(
-    CURRENT_ASSETS,
-    async (file) => {
+    CURRENT_ASSETS.filter((x) => !x.disabled),
+    async ({ file }) => {
       const content = await getContent(file)
       return { file, content }
     },
     5
+  )
+
+  debug(
+    'after filter out disabled: %O',
+    listData.map((x) => x.file)
   )
 
   // create new tags
