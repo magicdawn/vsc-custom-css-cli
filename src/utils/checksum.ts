@@ -1,7 +1,10 @@
-import path from 'path'
-import fse from 'fs-extra'
 import { createHash } from 'crypto'
+import esmUtils from 'esm-utils'
+import fse from 'fs-extra'
+import path from 'path'
 import { APP_DIR } from '../config'
+
+const { require } = esmUtils(import.meta)
 
 /**
  * https://github.com/lehni/vscode-fix-checksums/blob/1943e4f21251fdf2bc93479e7d391a906a00e9b1/extension.js#L27

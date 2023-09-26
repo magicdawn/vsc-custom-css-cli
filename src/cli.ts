@@ -1,6 +1,11 @@
+#!/usr/bin/env node
+
 import { Builtins, Cli } from 'clipanion'
+import esmUtils from 'esm-utils'
 import { PackageJson } from 'type-fest'
-const { version, name, bin } = require('../package') as PackageJson
+
+const { require } = esmUtils(import.meta)
+const { version, name, bin } = require('../package.json') as PackageJson
 
 const [node, app, ...args] = process.argv
 const cli = new Cli({

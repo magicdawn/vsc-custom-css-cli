@@ -3,7 +3,6 @@ logs
 *.log*
 .DS_Store
 
-
 .nyc_output
 coverage
 coverage.*
@@ -11,3 +10,8 @@ coverage.*
 node_modules
 *.tsbuildinfo
 lib
+
+# ts
+**/*.tsbuildinfo
+/lib
+/dist

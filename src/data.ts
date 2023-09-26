@@ -1,9 +1,11 @@
 import consola from 'consola'
 import envPaths from 'env-paths'
+import esmUtils from 'esm-utils'
 import fse from 'fs-extra'
 import path from 'path'
 import { PackageJson } from 'type-fest'
 
+const { require } = esmUtils(import.meta)
 const { name } = require('../package.json') as PackageJson
 const paths = envPaths(name, { suffix: '' })
 
