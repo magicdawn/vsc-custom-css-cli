@@ -81,5 +81,8 @@
     "*.{js,less,vue}": [
       "prettier --write"
     ]
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
