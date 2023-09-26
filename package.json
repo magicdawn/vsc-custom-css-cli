@@ -8,12 +8,7 @@
     "vsc-custom": "dist/cli.js"
   },
   "files": [
-    "bin/vsc-custom.js",
-    "lib",
-    "package.json",
-    "README.md",
-    "CHANGELOG.md",
-    "LICENSE"
+    "dist/"
   ],
   "scripts": {
     "prepare": "husky install",
