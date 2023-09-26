@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.7.0 2023-09-26
+
+- move to tsup, require node >= 18 (current LTS
+
 ## v0.6.0 2023-03-31
 
 - save disabled state in `vsc-custom ls` command
