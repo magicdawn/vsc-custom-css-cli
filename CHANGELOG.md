@@ -1,8 +1,12 @@
 # CHANGELOG
 
+## v0.8.0 2024-02-01
+
+- fix checksum hash alogrithm for vscode v1.80 (md5 -> sha256)
+
 ## v0.7.0 2023-09-26
 
-- move to tsup, require node >= 18 (current LTS
+- move to tsup, require node >= 18 (current LTS)
 
 ## v0.6.0 2023-03-31
 
