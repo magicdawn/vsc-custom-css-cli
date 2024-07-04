@@ -17,6 +17,9 @@ importers:
       consola:
         specifier: ^3.2.3
         version: 3.2.3
+      csp-dev:
+        specifier: ^1.0.2
+        version: 1.0.2
       debug:
         specifier: ^4.3.5
         version: 4.3.5(supports-color@8.1.1)
@@ -38,6 +41,9 @@ importers:
       less:
         specifier: ^4.2.0
         version: 4.2.0
+      log-symbols:
+        specifier: ^6.0.0
+        version: 6.0.0
       promise.map:
         specifier: ^0.5.0
         version: 0.5.0
@@ -63,6 +69,9 @@ importers:
       '@swc/helpers':
         specifier: ^0.5.11
         version: 0.5.11
+      '@types/csp-dev':
+        specifier: ^1.0.3
+        version: 1.0.3
       '@types/debug':
         specifier: ^4.1.12
         version: 4.1.12
@@ -735,6 +744,9 @@ packages:
   '@tsconfig/node16@1.0.2':
     resolution: {integrity: sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==}
 
+  '@types/csp-dev@1.0.3':
+    resolution: {integrity: sha512-CitqSHhJY6hQmxJscJxGLiX63H5gmi/jOB/7Bx1Lb3dg2tOaA/xrup5cIeNc9AS9/mlr3N0Pg6s+3D2qALb/Tw==}
+
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
 
@@ -1079,6 +1091,9 @@ packages:
   cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
+
+  csp-dev@1.0.2:
+    resolution: {integrity: sha512-CiAfcnWC6wcSC6tRNd5btC03ASiUzwQhmMsp7djYsD8KLrbMFX5zzpgcAt8y+tHqPd/DMnVwx68Fx3U/SOQ+0g==}
 
   css-select@5.1.0:
     resolution: {integrity: sha512-nwoRF1rvRRnnCqqY7updORDsuqKzqYJ28+oSMaJMMgOauh3fvwHqMS7EZpIPqK8GL+g9mKxF1vP/ZjSeNjEVHg==}
@@ -1737,6 +1752,10 @@ packages:
     resolution: {integrity: sha512-knxG2q4UC3u8stRGyAVJCOdxFmv5DZiRcdlIaAQXAbSfJya+OhopNotLQrstBhququ4ZpuKbDc/8S6mgXgPFPw==}
     engines: {node: '>=10'}
 
+  is-unicode-supported@1.3.0:
+    resolution: {integrity: sha512-43r2mRvz+8JRIKnWJ+3j8JtjRKZ6GmjzfaE/qiBJnikNnYv/6bagRJ1kUhNk8R5EX/GkobD+r+sfxCPJsiKBLQ==}
+    engines: {node: '>=12'}
+
   is-weakref@1.0.2:
     resolution: {integrity: sha512-qctsuLZmIQ0+vSSMfoVvyFe2+GSEvnmZ2ezTup1SBse9+twCCeial6EEi3Nc2KFcf6+qz2FBPnjXsk8xhKSaPQ==}
 
@@ -1886,6 +1905,10 @@ packages:
   log-symbols@4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
     engines: {node: '>=10'}
+
+  log-symbols@6.0.0:
+    resolution: {integrity: sha512-i24m8rpwhmPIS4zscNzK6MSEhk0DUWa/8iYQWxhffV8jkI4Phvs3F+quL5xvS0gdQR0FyTCMMH33Y78dDTzzIw==}
+    engines: {node: '>=18'}
 
   log-update@6.0.0:
     resolution: {integrity: sha512-niTvB4gqvtof056rRIrTZvjNYE4rCUzO6X/X+kYjd7WFxXeJ0NwEFnRxX6ehkvv3jTwrXnNdtAak5XYZuIyPFw==}
@@ -3361,6 +3384,8 @@ snapshots:
 
   '@tsconfig/node16@1.0.2': {}
 
+  '@types/csp-dev@1.0.3': {}
+
   '@types/debug@4.1.12':
     dependencies:
       '@types/ms': 0.7.31
@@ -3729,6 +3754,8 @@ snapshots:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+
+  csp-dev@1.0.2: {}
 
   css-select@5.1.0:
     dependencies:
@@ -4522,6 +4549,8 @@ snapshots:
 
   is-unicode-supported@0.1.0: {}
 
+  is-unicode-supported@1.3.0: {}
+
   is-weakref@1.0.2:
     dependencies:
       call-bind: 1.0.2
@@ -4696,6 +4725,11 @@ snapshots:
     dependencies:
       chalk: 4.1.2
       is-unicode-supported: 0.1.0
+
+  log-symbols@6.0.0:
+    dependencies:
+      chalk: 5.3.0
+      is-unicode-supported: 1.3.0
 
   log-update@6.0.0:
     dependencies:

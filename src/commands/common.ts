@@ -1,5 +1,6 @@
-import cheerio, { CheerioAPI } from 'cheerio'
+import { CheerioAPI, load as cheerioLoad } from 'cheerio'
 import consola from 'consola'
+import ContentSecurityPolicy, { type DirectiveDescriptor } from 'csp-dev'
 import debugFactory from 'debug'
 import fse from 'fs-extra'
 import path from 'path'
@@ -24,7 +25,7 @@ export async function prepare() {
   }
 
   const htmlContent = fse.readFileSync(HTML_FILE, 'utf-8')
-  const $ = cheerio.load(htmlContent, { decodeEntities: false })
+  const $ = cheerioLoad(htmlContent, { decodeEntities: false })
   return $
 }
 
@@ -40,6 +41,33 @@ export function save($: CheerioAPI) {
 export async function applyData() {
   const $ = await prepare()
 
+  // <meta http-equiv="Content-Security-Policy" content="
+  {
+    const cspMeta = $(`meta[http-equiv="Content-Security-Policy"]`)
+    const cspContent = cspMeta.attr('content')
+
+    // csp-dev 没有 trim, 包含很多 `\t\t`
+    const fixJson = (json: DirectiveDescriptor) => {
+      Object.keys(json).forEach((key) => {
+        const value = json[key] as string[]
+        json[key] = value.map((x) => x.trim())
+      })
+      return json
+    }
+
+    debugger
+    const cspModel = new ContentSecurityPolicy(cspContent)
+    const parsed = fixJson(cspModel.share('json'))
+
+    if (!parsed['script-src']?.includes(`'unsafe-inline'`)) {
+      parsed['script-src'] = [...(parsed['script-src'] || []), `'unsafe-inline'`]
+      const newModel = new ContentSecurityPolicy()
+      newModel.load(parsed)
+      const cspContentNew = newModel.share('string')
+      cspMeta.attr('content', cspContentNew)
+    }
+  }
+
   // remove all existing tags
   $(`[${DATA_ATTR_NAME}]`).remove()
 
@@ -50,17 +78,17 @@ export async function applyData() {
       const content = await getContent(file)
       return { file, content }
     },
-    5
+    5,
   )
 
   debug(
     'after filter out disabled: %O',
-    listData.map((x) => x.file)
+    listData.map((x) => x.file),
   )
 
   // create new tags
   for (let { file, content } of listData) {
-    const ext = path.extname(file)
+    const ext = path.extname(file).slice(1)
     const tagName = ext === 'js' ? 'script' : 'style'
     const tag = `\n<${tagName} ${DATA_ATTR_NAME}='${file}'>\n${content}\n</${tagName}>\n`
     $('html').append(tag)
