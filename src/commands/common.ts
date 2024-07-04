@@ -42,6 +42,7 @@ export async function applyData() {
   const $ = await prepare()
 
   // <meta http-equiv="Content-Security-Policy" content="
+  // ensure unsafe-inline is allowed, custom js is added as `unsafe-inline`
   {
     const cspMeta = $(`meta[http-equiv="Content-Security-Policy"]`)
     const cspContent = cspMeta.attr('content')
@@ -55,7 +56,6 @@ export async function applyData() {
       return json
     }
 
-    debugger
     const cspModel = new ContentSecurityPolicy(cspContent)
     const parsed = fixJson(cspModel.share('json'))
 

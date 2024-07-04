@@ -12,7 +12,7 @@ export class ListCommand extends Command {
   }
 
   interactive = Option.Boolean('-i,--interactive', false, {
-    description: 'list & slect with an interactive prompt',
+    description: 'list & select with an interactive prompt',
   })
 
   async execute() {
