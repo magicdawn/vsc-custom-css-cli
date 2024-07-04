@@ -62,8 +62,8 @@ export async function getContent(file: string) {
     }
 
     if (ext === 'scss') {
-      const output = sass.renderSync({ file, outputStyle: 'expanded' })
-      content = output.css.toString()
+      const output = await sass.compileAsync(file, { style: 'expanded' })
+      content = output.css
     }
   }
 
@@ -73,8 +73,8 @@ export async function getContent(file: string) {
       content = output.css
     }
     if (ext === 'scss') {
-      const o = sass.renderSync({ data: content })
-      content = o.css.toString()
+      const output = await sass.compileStringAsync(content, { style: 'expanded' })
+      content = output.css
     }
   }
 
