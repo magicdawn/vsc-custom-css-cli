@@ -1,6 +1,6 @@
 {
   "name": "vsc-custom-css-cli",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "vsc-custom-css-cli",
   "type": "module",
   "exports": "./dist/cli.js",
