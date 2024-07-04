@@ -1,5 +1,5 @@
-import path from 'path'
 import fse from 'fs-extra'
+import path from 'path'
 
 type Platform = typeof process.platform
 type IAppDirRegistry = Partial<{
@@ -19,7 +19,7 @@ const htmlRelativeFile = [
   'out/vs/code/electron-browser/workbench/workbench.html',
 ]
 
-export const APP_DIR = APP_DIR_REGISTRY[process.platform]
+export const APP_DIR = APP_DIR_REGISTRY[process.platform] || ''
 if (!APP_DIR) {
   throw new Error('unsupported platform')
 }

@@ -2,10 +2,9 @@
 
 import { Builtins, Cli } from 'clipanion'
 import esmUtils from 'esm-utils'
-import { PackageJson } from 'type-fest'
 
 const { require } = esmUtils(import.meta)
-const { version, name, bin } = require('../package.json') as PackageJson
+const { version, name, bin } = require('../package.json') as CurrentPackageJson
 
 const [node, app, ...args] = process.argv
 const cli = new Cli({
@@ -29,6 +28,7 @@ import { UpdateCommand } from './commands/update'
 cli.register(UpdateCommand)
 
 import { ListCommand } from './commands/list'
+import type { CurrentPackageJson } from './utils/types'
 cli.register(ListCommand)
 
 cli.runExit(args, Cli.defaultContext)

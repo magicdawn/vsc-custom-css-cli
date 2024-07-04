@@ -3,10 +3,10 @@ import envPaths from 'env-paths'
 import esmUtils from 'esm-utils'
 import fse from 'fs-extra'
 import path from 'path'
-import { PackageJson } from 'type-fest'
+import type { CurrentPackageJson } from './utils/types'
 
 const { require } = esmUtils(import.meta)
-const { name } = require('../package.json') as PackageJson
+const { name } = require('../package.json') as CurrentPackageJson
 const paths = envPaths(name, { suffix: '' })
 
 export type AddedAsset = { file: string; disabled: boolean }

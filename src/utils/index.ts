@@ -14,7 +14,7 @@ export * from './permission'
 export function cleanUp($: CheerioAPI) {
   const tags = $(`[${DATA_ATTR_NAME}]`).toArray()
   tags.forEach((t) => {
-    const file = $(t).attr(DATA_ATTR_NAME)
+    const file = $(t).attr(DATA_ATTR_NAME) || ''
     const remove = () => $(t).remove()
 
     // do not check url
