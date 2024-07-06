@@ -54,7 +54,7 @@ export class ListCommand extends Command {
 
     const msgs = CURRENT_ASSETS.map((item) => {
       // const symbol = item.disabled ? logSymbols.success : logSymbols.error
-      const symbol = item.disabled ? '✅' : '🟩'
+      const symbol = item.disabled ? '🟩' : '✅'
       return `${symbol} ${item.file}`
     })
     console.log(msgs.join('\n'))
