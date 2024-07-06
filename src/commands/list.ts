@@ -1,5 +1,6 @@
+import { checkbox } from '@inquirer/prompts'
+import chalk from 'chalk'
 import { Command, Option, Usage } from 'clipanion'
-import inquirer from 'inquirer'
 import { AddedAsset, CURRENT_ASSETS, write } from '../data'
 import { applyData } from './common'
 
@@ -24,22 +25,25 @@ export class ListCommand extends Command {
   }
 
   interactiveSelect = async () => {
-    const { selectedIndex } = await inquirer.prompt([
-      {
-        type: 'checkbox',
-        message: 'choose from list',
-        name: 'selectedIndex',
-        choices: CURRENT_ASSETS.map((asset, index) => {
-          return { name: asset.file, value: index, checked: !asset.disabled }
-        }),
+    const selectedIndex = await checkbox({
+      message: 'choose from list (✅ enabled, 🟩 disabled)',
+      choices: CURRENT_ASSETS.map((asset, index) => {
+        return { name: asset.file, value: index, checked: !asset.disabled }
+      }),
+      theme: {
+        icon: {
+          checked: ' ✅',
+          unchecked: ' 🟩',
+          cursor: chalk.redBright('>'),
+        },
       },
-    ])
+    })
 
     const newList: AddedAsset[] = CURRENT_ASSETS.map((item, index) => {
       return { ...item, disabled: !selectedIndex.includes(index) }
     })
-    write(newList)
 
+    write(newList)
     await applyData()
   }
 
