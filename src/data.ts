@@ -1,13 +1,10 @@
 import consola from 'consola'
 import envPaths from 'env-paths'
-import esmUtils from 'esm-utils'
 import fse from 'fs-extra'
 import path from 'path'
-import type { CurrentPackageJson } from './utils/types'
+import { currentPackageJson } from './pkg'
 
-const { require } = esmUtils(import.meta)
-const { name } = require('../package.json') as CurrentPackageJson
-const paths = envPaths(name, { suffix: '' })
+const paths = envPaths(currentPackageJson.name, { suffix: '' })
 
 export type AddedAsset = { file: string; disabled: boolean }
 

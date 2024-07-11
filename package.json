@@ -45,7 +45,6 @@
     "debug": "^4.3.5",
     "dl-vampire": "^2.1.2",
     "env-paths": "3",
-    "esm-utils": "^4.3.0",
     "fs-extra": "^11.2.0",
     "less": "^4.2.0",
     "log-symbols": "^6.0.0",

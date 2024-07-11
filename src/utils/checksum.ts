@@ -1,10 +1,7 @@
 import { createHash } from 'crypto'
-import esmUtils from 'esm-utils'
 import fse from 'fs-extra'
 import path from 'path'
 import { APP_DIR } from '../config'
-
-const { require } = esmUtils(import.meta)
 
 /**
  * https://github.com/lehni/vscode-fix-checksums/blob/1943e4f21251fdf2bc93479e7d391a906a00e9b1/extension.js#L27
@@ -20,7 +17,7 @@ export function computeChecksum(file: string) {
 
 export function checkChecksum() {
   const productFile = path.join(APP_DIR, 'product.json')
-  const product = require(productFile)
+  const product = fse.readJSONSync(productFile)
   let changed = false
 
   for (const [filePath, curChecksum] of Object.entries(product.checksums)) {
