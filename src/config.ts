@@ -12,6 +12,9 @@ const APP_DIR_REGISTRY: IAppDirRegistry = {
 
 // const htmlRelativeFile =
 const htmlRelativeFile = [
+  // new Version: 1.94.0
+  'out/vs/code/electron-sandbox/workbench/workbench.esm.html',
+
   // new Version: 1.70.0
   'out/vs/code/electron-sandbox/workbench/workbench.html',
 
