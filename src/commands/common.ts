@@ -25,7 +25,7 @@ export async function prepare() {
   }
 
   const htmlContent = fse.readFileSync(HTML_FILE, 'utf-8')
-  const $ = cheerioLoad(htmlContent, { decodeEntities: false })
+  const $ = cheerioLoad(htmlContent, {})
   return $
 }
 
