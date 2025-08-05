@@ -1,7 +1,7 @@
+import path from 'node:path'
 import consola from 'consola'
 import envPaths from 'env-paths'
 import fse from 'fs-extra'
-import path from 'path'
 import { currentPackageJson } from './pkg'
 
 const paths = envPaths(currentPackageJson.name, { suffix: '' })

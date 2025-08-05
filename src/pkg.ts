@@ -1,4 +1,4 @@
-import { createRequire } from 'module'
+import { createRequire } from 'node:module'
 import type { Merge, PackageJson, SetRequired } from 'type-fest'
 
 export type CurrentPackageJson = Merge<

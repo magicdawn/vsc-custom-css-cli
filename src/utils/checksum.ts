@@ -1,6 +1,6 @@
-import { createHash } from 'crypto'
+import { createHash } from 'node:crypto'
+import path from 'node:path'
 import fse from 'fs-extra'
-import path from 'path'
 import { APP_DIR } from '../config'
 
 /**
@@ -11,7 +11,7 @@ import { APP_DIR } from '../config'
  */
 
 export function computeChecksum(file: string) {
-  var contents = fse.readFileSync(file)
+  const contents = fse.readFileSync(file)
   return createHash('sha256').update(contents).digest('base64').replace(/=+$/, '')
 }
 

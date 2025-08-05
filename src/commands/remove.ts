@@ -1,6 +1,6 @@
-import { Command, Option, Usage } from 'clipanion'
+import path from 'node:path'
+import { Command, Option, type Usage } from 'clipanion'
 import consola from 'consola'
-import path from 'path'
 import { remove } from '../data'
 import { isUrl } from '../utils'
 import { applyData } from './common'

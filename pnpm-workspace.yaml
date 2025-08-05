@@ -1,0 +1,8 @@
+overrides:
+  typescript: '5.8'
+
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@swc/core'
+  - esbuild
+  - unrs-resolver

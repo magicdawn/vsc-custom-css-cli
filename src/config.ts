@@ -1,5 +1,5 @@
+import path from 'node:path'
 import fse from 'fs-extra'
-import path from 'path'
 
 type Platform = typeof process.platform
 type IAppDirRegistry = Partial<{

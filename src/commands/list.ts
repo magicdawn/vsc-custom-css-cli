@@ -1,7 +1,7 @@
 import { checkbox } from '@inquirer/prompts'
 import chalk from 'chalk'
-import { Command, Option, Usage } from 'clipanion'
-import { AddedAsset, CURRENT_ASSETS, write } from '../data'
+import { Command, Option, type Usage } from 'clipanion'
+import { CURRENT_ASSETS, write, type AddedAsset } from '../data'
 import { applyData } from './common'
 
 export class ListCommand extends Command {
@@ -16,7 +16,7 @@ export class ListCommand extends Command {
     description: 'list & select with an interactive prompt',
   })
 
-  async execute() {
+  execute() {
     if (this.interactive) {
       return this.interactiveSelect()
     } else {
@@ -47,6 +47,7 @@ export class ListCommand extends Command {
     await applyData()
   }
 
+  // eslint-disable-next-line require-await
   normalList = async () => {
     console.log('')
     console.log('Current added files: (✅ enabled, 🟩 disabled)')

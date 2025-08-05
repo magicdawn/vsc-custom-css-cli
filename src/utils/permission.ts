@@ -1,6 +1,6 @@
-import os from 'os'
-import prompt from 'sudo-prompt'
+import os from 'node:os'
 import debugFactory from 'debug'
+import prompt from 'sudo-prompt'
 
 const debug = debugFactory('vsc-custom:utils:permission')
 

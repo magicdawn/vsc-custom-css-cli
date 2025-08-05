@@ -1,4 +1,4 @@
-import { Command, Usage } from 'clipanion'
+import { Command, type Usage } from 'clipanion'
 import { applyData } from './common'
 
 export class UpdateCommand extends Command {

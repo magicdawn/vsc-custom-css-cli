@@ -1,11 +1,11 @@
-import { CheerioAPI } from 'cheerio'
+import path from 'node:path'
 import consola from 'consola'
 import { readUrl } from 'dl-vampire'
 import fse from 'fs-extra'
 import less from 'less'
-import path from 'path'
 import sass from 'sass'
 import { ALLOWED_EXT, DATA_ATTR_NAME } from '../config'
+import type { CheerioAPI } from 'cheerio'
 
 export * from './checksum'
 export * from './permission'
@@ -33,7 +33,7 @@ export const isUrl = (url: string) => /^https?:\/\//.test(url)
 
 export const read = (file: string) => fse.readFileSync(file, 'utf-8')
 
-export async function getRawContent(file: string) {
+export function getRawContent(file: string) {
   if (isUrl(file)) {
     return readUrl({
       url: file,

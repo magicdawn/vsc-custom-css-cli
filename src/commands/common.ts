@@ -1,9 +1,9 @@
-import { CheerioAPI, load as cheerioLoad } from 'cheerio'
+import path from 'node:path'
+import { load as cheerioLoad, type CheerioAPI } from 'cheerio'
 import consola from 'consola'
 import ContentSecurityPolicy, { type DirectiveDescriptor } from 'csp-dev'
 import debugFactory from 'debug'
 import fse from 'fs-extra'
-import path from 'path'
 import pmap from 'promise.map'
 import { APP_DIR, DATA_ATTR_NAME, HTML_FILE } from '../config'
 import { CURRENT_ASSETS } from '../data'
@@ -15,7 +15,7 @@ export async function prepare() {
   let ok = true
   try {
     fse.accessSync(HTML_FILE, fse.constants.W_OK)
-  } catch (e) {
+  } catch {
     ok = false
   }
 
@@ -87,7 +87,7 @@ export async function applyData() {
   )
 
   // create new tags
-  for (let { file, content } of listData) {
+  for (const { file, content } of listData) {
     const ext = path.extname(file).slice(1)
     const tagName = ext === 'js' ? 'script' : 'style'
     const tag = `\n<${tagName} ${DATA_ATTR_NAME}='${file}'>\n${content}\n</${tagName}>\n`

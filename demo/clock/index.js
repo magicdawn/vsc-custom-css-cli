@@ -1,4 +1,4 @@
-async function whenReady() {
+function whenReady() {
   return new Promise((resolve) => {
     if (document.readyState !== 'loading') {
       resolve()
