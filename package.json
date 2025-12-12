@@ -37,9 +37,9 @@
     "prepare": "husky",
     "test": "mocha",
     "test-cover": "nyc --reporter=lcov --reporter=text mocha",
-    "dev": "tsup --watch",
+    "dev": "tsdown --watch",
     "typecheck": "tsc --noEmit",
-    "build": "pnpm typecheck && tsup",
+    "build": "pnpm typecheck && tsdown",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
@@ -79,7 +79,7 @@
     "prettier": "^3.7.4",
     "should": "^13.2.3",
     "ts-node": "^10.9.2",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.17.3",
     "type-fest": "^5.3.1",
     "typescript": "^5.9.3"
   },
